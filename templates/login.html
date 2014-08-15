@@ -2,9 +2,7 @@
 {% block body %}
 
 <div class="site-wrapper">
-
     <div class="site-wrapper-inner">
-
         <div class="cover-container">
 
             <div class="masthead clearfix">
@@ -13,20 +11,18 @@
                     <ul class="nav masthead-nav">
                         <li><a href="/home">Home</a></li>
                         <li class="active"><a href="/login">Login</a></li>
-                        <li><a href="#">Test Creds</a></li>
+                        <li><a href="/cred">Test Creds</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="inner cover">
-
-
-        <form class="form-signin" role="form" action="{{ url_for('login') }}" method="post">
-            <!--<h1 class="cover-heading">Login</h1>-->
-            <input type="email" class="form-control" placeholder="Email address" required autofocus name="username">
-            <input type="password" class="form-control" placeholder="Password" required name="password">
-            <a href="#" class="btn btn-default form-control">Sign in</a>
-        </form>
+                <form class="form-signin" role="form" action="{{ url_for('login') }}" method="post">
+                    {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
+                    <input type="email" class="form-control" placeholder="Email address" required autofocus name="username">
+                    <input type="password" class="form-control" placeholder="Password" required name="password">
+                    <input type="submit" value="Sign in" class="btn btn-default form-control"/>
+                </form>
             </div>
 
             <div class="mastfoot">
@@ -34,9 +30,7 @@
                     <p>Project for <a href="http://www.okta.com">Okta</a>, by <a href="mailto:rwang@okta.com">@RaymondWang</a> &amp;&amp; <a href="mailto:jackychen@okta.com">@JackieChan</a>.</p>
                 </div>
             </div>
-
         </div>
-
     </div>
 </div>
 {% endblock %}
