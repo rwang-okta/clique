@@ -23,6 +23,7 @@
 
             <div class="inner cover">
                 <form class="form-signin" role="form" action="{{ url_for('join') }}" method="post">
+                    {% if joined %}<p><strong>You are in the Clique.</strong> {% endif %}
                     {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
                     <input type="email" class="form-control" placeholder="Email address" required autofocus
                            name="username">

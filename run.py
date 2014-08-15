@@ -21,6 +21,7 @@ def home():
 @app.route('/join', methods=['GET', 'POST'])
 def join():
     error = None
+    joined = None
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -29,12 +30,12 @@ def join():
         if domain.group() == '@okta.com':
             db_session.add(User(username, password))
             db_session.commit()
-            return redirect('/login')
+            joined = True
         else:
             error = 'Only Okta users can join the Clique :)'
     # the code below is executed if the request method
     # was GET or the credentials were invalid
-    return render_template('join.html', error = error)
+    return render_template('join.html', error = error, joined = joined)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
