@@ -10,7 +10,7 @@
                     <h3 class="masthead-brand">Clique</h3>
                     <ul class="nav masthead-nav">
                         <li><a href="/home">Home</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="/logout">Logout</a></li>
                         <li class="active"><a href="/cred">Test Creds</a></li>
                     </ul>
                 </div>
@@ -33,53 +33,17 @@
                     <div class="bodycontainer scrollable">
                         <table class="table table-hover text-left">
                             <tbody>
+                            {% for cred in creds %}
                             <tr>
-                                <td>Hipchat</td>
-                                <td></td>
+                                <td>{{cred.oan_app_name}}</td>
+                                <td>{{cred.comment}}</td>
                                 <td>
-                                    <button type="button" class="btn btn-warning">Tim Secor</button>
+                                    <button type="button" class="btn btn-warning">{{cred.user}}</button>
                                 </td>
-                                <td>8/15/2014</td>
-                                <td>8/20/2014</td>
+                                <td>{{cred.checkout}}</td>
+                                <td>{{cred.expire}}</td>
                             </tr>
-                            <tr>
-                                <td>Coupa</td>
-                                <td></td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Cindy Wu</button>
-                                </td>
-                                <td>8/15/2014</td>
-                                <td>8/20/2014</td>
-                            </tr>
-                            <tr>
-                                <td>Google Apps</td>
-                                <td></td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Bryant Ng</button>
-                                </td>
-                                <td>8/15/2014</td>
-                                <td>8/20/2014</td>
-                            </tr>
-                            <tr>
-                                <td>Hipchat</td>
-                                <td>Administrator privileges.</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Shaolin Shen</button>
-                                </td>
-                                <td>8/15/2014</td>
-                                <td>8/20/2014</td>
-                            </tr>
-                            <tr>
-                                <td>Workday</td>
-                                <td>For Sales use only.</td>
-                                <td>
-                                    <button type="button" class="btn btn-warning">Angie Song</button>
-                                </td>
-                                <td>8/15/2014</td>
-                                <td>8/20/2014</td>
-                            </tr>
-
-
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
@@ -89,7 +53,7 @@
             <div class="mastfoot">
                 <div class="inner">
                     <p>Project for <a href="http://www.okta.com">Okta</a>, by <a href="mailto:rwang@okta.com">@RaymondWang</a>
-                        &amp;&amp; <a href="mailto:jackychen@okta.com">@JackieChan</a>.</p>
+                        &amp;&amp; <a href="mailto:jackychen@okta.com">@JackyChen</a>.</p>
                 </div>
             </div>
         </div>

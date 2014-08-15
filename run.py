@@ -2,7 +2,7 @@ import os
 from flask import Flask, request, render_template, url_for, flash, session, redirect
 from flask_login import login_required, login_user, logout_user, current_user, LoginManager
 from database import db_session, init_db
-from models import User
+from models import User, Creds
 
 # from flask.ext.login import LoginManager
 
@@ -45,7 +45,8 @@ def logout():
 @login_required
 @app.route('/cred', methods=['GET'])
 def cred():
-    return render_template('cred.html')
+    creds = Creds.query.all()
+    return render_template('cred.html', creds=creds)
 
 
 #helpers
@@ -57,6 +58,36 @@ def valid_login(username, password):
 def load_user(email):
     #print 'this is executed',userid
     return User(email)
+
+def load_dummy_data():
+    u = User('admin@okta.com', 'everychanceiget')
+    db_session.add(u)
+    u = User('rwang@okta.com', 'rayisawesome')
+    db_session.add(u)
+    c = Creds('Hipchat', '', 'rwang@okta.com')
+    db_session.add(c)
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+    db_session.add(Creds('blah', '', 'blah'))
+
+    db_session.commit()
+
 
 #tears down session connections when apps die.
 #@app.teardown_appcontext
@@ -71,9 +102,7 @@ if __name__ == '__main__':
     init_db()
 
     #default user (may change this to only add a user if none currently exists)
-    #if not User.query.all():
-    #    u = User('admin@okta.com', 'everychanceiget')
-    #    db_session.add(u)
-    #    db_session.commit()
+    if not User.query.all():
+         load_dummy_data()
 
     app.run(debug=True)

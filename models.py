@@ -4,15 +4,12 @@ from database import Base
 
 class User(Base):
     __tablename__ = 'users'
-    id = Column(Integer, primary_key=True)
-    email = Column(String(120), unique=True)
+    email = Column(String(120), unique=True, primary_key=True)
     password = Column(String(120))
-    name = Column(String(120))
 
-    def __init__(self, email=None, password=None, name=None):
+    def __init__(self, email=None, password=None):
         self.email = email
         self.password = password
-        self.name = name
 
     def __repr__(self):
         return '<User %r>' % (self.email)
@@ -26,20 +23,28 @@ class User(Base):
 class Creds(Base):
     __tablename__ = 'creds'
     id = Column(Integer, primary_key=True)
+    org = Column(String(120))
     oan_app_name = Column(String(120))
-    app_version = Column(String(120))
+    #app_version = Column(String(120))
     team = Column(String(120))
     team_contact = Column(String(120))
     login_url = Column(String(120))
     username = Column(String(120))
     password = Column(String(120))
-    api_token = Column(String(120))
-    security_qa = Column(String(120))
-    comments = Column(String(120))
-    automation = Column(Boolean)
-    user_id = Column(Integer, ForeignKey('users.id'))
+    #api_token = Column(String(120))
+    #security_qa = Column(String(120))
+    comment = Column(String(120))
+    #automation = Column(Boolean)
+    user = Column(String(120), ForeignKey('users.email'))
     checkout = Column(Date)
     expire = Column(Date)
+
+    def __init__(self, oan_app_name=None, comment=None, user=None, checkout=None, expire=None):
+        self.oan_app_name = oan_app_name
+        self.comment = comment
+        self.user = user
+        self.checkout = checkout
+        self.expire = expire
 
     def __repr__(self):
         return '<Creds %r>' % (self.username)
