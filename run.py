@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, url_for
+from flask import Flask, request, render_template, url_for, flash, session
 from flask_login import login_required, login_user, logout_user, current_user, LoginManager
 from database import db_session, init_db
 from models import User
@@ -21,26 +21,39 @@ def home():
 def login():
     error = None
     if request.method == 'POST':
-        if valid_login(request.form['username'],
-            request.form['password']):
-            return render_template('cred.html', error=error)#log_the_user_in(request.form['username'])
+        user = valid_login(request.form['username'], request.form['password'])
+        if user:
+            login_user(user)
+            session['username'] = request.form['username']
+            flash("logged in successfully.")
+            return render_template('cred.html', error=error)
         else:
             error = 'Invalid username/password'
     # the code below is executed if the request method
     # was GET or the credentials were invalid
     return render_template('login.html', error=error)
 
+@app.route('/logout', methods=['GET','POST'])
+def logout():
+    error = None
+    session.pop('username', None)
+    return render_template('login.html', error=error)
+
+@login_required
 @app.route('/cred', methods=['GET'])
 def cred():
     return render_template('cred.html')
 
+
 #helpers
 def valid_login(username, password):
-    user = User.query.filter(User.email == username and User.password == password).first()
-    if user:
-        return True
-    else:
-        return False
+    user = User.query.filter(User.email == username, User.password == password).first()
+    return user
+
+@login_manager.user_loader
+def load_user(email):
+    #print 'this is executed',userid
+    return User(email)
 
 #tears down session connections when apps die.
 #@app.teardown_appcontext

@@ -11,7 +11,7 @@
                     <ul class="nav masthead-nav">
                         <li class="active"><a href="/home">Home</a></li>
                         <li><a href="/login">Login</a></li>
-                        <li><a href="/cred">Test Creds</a></li>
+                        {% if session.logged_in %}<li><a href="/cred">Test Creds</a></li>{% endif %}
                     </ul>
                 </div>
             </div>
