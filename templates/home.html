@@ -10,8 +10,12 @@
                     <h3 class="masthead-brand">Clique</h3>
                     <ul class="nav masthead-nav">
                         <li class="active"><a href="/home">Home</a></li>
+                        {% if session['username'] %}
+                        <li><a href="/logout">Log out</a></li>
+                        {% else %}
                         <li><a href="/login">Login</a></li>
-                        {% if session.logged_in %}<li><a href="/cred">Test Creds</a></li>{% endif %}
+                        {% endif %}
+                        {% if session['username'] %}<li><a href="/cred">Test Creds</a></li>{% endif %}
                     </ul>
                 </div>
             </div>
