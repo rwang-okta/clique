@@ -10,20 +10,24 @@
                     <h3 class="masthead-brand">Clique</h3>
                     <ul class="nav masthead-nav">
                         <li><a href="/home">Home</a></li>
-                        <li><a href="/join">Join</a></li>
-                        <li class="active"><a href="/login">Login</a></li>
-                        {% if session.logged_in %}<li><a href="/cred">Test Creds</a></li>{% endif %}
+                        <li class="active"><a href="/join">Join</a></li>
+                        {% if session['username'] %}
+                        <li><a href="/logout">Log out</a></li>
+                        {% else %}
+                        <li><a href="/login">Login</a></li>
+                        {% endif %}
+                        {% if session['username'] %}<li><a href="/cred">Test Creds</a></li>{% endif %}
                     </ul>
                 </div>
             </div>
 
             <div class="inner cover">
-                <form class="form-signin" role="form" action="{{ url_for('login') }}" method="post">
+                <form class="form-signin" role="form" action="{{ url_for('join') }}" method="post">
                     {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
                     <input type="email" class="form-control" placeholder="Email address" required autofocus
                            name="username">
                     <input type="password" class="form-control" placeholder="Password" required name="password">
-                    <input type="submit" value="Sign in" class="btn btn-default form-control"/>
+                    <input type="submit" value="Join the Clique" class="btn btn-default form-control"/>
                 </form>
             </div>
 

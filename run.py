@@ -1,4 +1,4 @@
-import os
+import os, re
 from flask import Flask, request, render_template, url_for, flash, session, redirect
 from flask_login import login_required, login_user, logout_user, current_user, LoginManager
 from database import db_session, init_db
@@ -18,6 +18,23 @@ login_manager.init_app(app)
 def home():
     return render_template('home.html')
 
+@app.route('/join', methods=['GET', 'POST'])
+def join():
+    error = None
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        #TODO better ways for regex?
+        domain = re.search("@[\w.]+", username)
+        if domain.group() == '@okta.com':
+            db_session.add(User(username, password))
+            db_session.commit()
+            return redirect('/login')
+        else:
+            error = 'Only Okta users can join the Clique :)'
+    # the code below is executed if the request method
+    # was GET or the credentials were invalid
+    return render_template('join.html', error = error)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -66,23 +83,6 @@ def load_dummy_data():
     db_session.add(u)
     c = Creds('Hipchat', '', 'rwang@okta.com')
     db_session.add(c)
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
-    db_session.add(Creds('blah', '', 'blah'))
     db_session.add(Creds('blah', '', 'blah'))
     db_session.add(Creds('blah', '', 'blah'))
 
