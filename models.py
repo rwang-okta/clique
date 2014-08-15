@@ -35,7 +35,7 @@ class Creds(Base):
     #security_qa = Column(String(120))
     comment = Column(String(120))
     #automation = Column(Boolean)
-    user = Column(String(120), ForeignKey('users.email'))
+    user = Column(String(120))
     checkout = Column(Date)
     expire = Column(Date)
 

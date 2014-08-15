@@ -40,7 +40,13 @@
                                 <td width="15%">{{cred.oan_app_name}}</td>
                                 <td width="35%">{{cred.comment}}</td>
                                 <td width="20%">
+                                    {% if cred.user == None %}
+                                    <button type="button" class="btn btn-success">Check-out</button>
+                                    {% elif cred.user == 'Disabled' %}
+                                    <button type="button" class="btn btn-danger">Disabled</button>
+                                    {% else %}
                                     <button type="button" class="btn btn-warning">{{cred.user}}</button>
+                                    {% endif %}
                                 </td>
                                 <td width="15%">{{cred.checkout}}</td>
                                 <td width="15%">{{cred.expire}}</td>
