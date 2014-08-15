@@ -1,8 +1,6 @@
 {% extends "layout.html" %}
 {% block body %}
 
-<!--<link rel="stylesheet" href="{{ url_for('static',filename='css/signin.css') }}">-->
-
 <div class="site-wrapper">
 
     <div class="site-wrapper-inner">
@@ -13,25 +11,27 @@
                 <div class="inner">
                     <h3 class="masthead-brand">Clique</h3>
                     <ul class="nav masthead-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="/login">Login</a></li>
+                        <li><a href="/home">Home</a></li>
+                        <li class="active"><a href="/login">Login</a></li>
                         <li><a href="#">Test Creds</a></li>
-                        <li><a href="#">Contact</a></li>
                     </ul>
                 </div>
             </div>
 
             <div class="inner cover">
-                <h1 class="cover-heading">Checkout Creds.</h1>
-                <p class="lead">Clique is a seamless way to check-out online credentials. Login, checkout credentials, and check them back in when done.</p>
-                <p class="lead">
-                    <a href="#" class="btn btn-lg btn-default">Get started</a>
-                </p>
+
+
+        <form class="form-signin" role="form" action="{{ url_for('login') }}" method="post">
+            <!--<h1 class="cover-heading">Login</h1>-->
+            <input type="email" class="form-control" placeholder="Email address" required autofocus name="username">
+            <input type="password" class="form-control" placeholder="Password" required name="password">
+            <a href="#" class="btn btn-default form-control">Sign in</a>
+        </form>
             </div>
 
             <div class="mastfoot">
                 <div class="inner">
-                    <p>Project for <a href="http://www.okta.com">Okta</a>, by <a href="#">@JackieChan</a> &amp;&amp; <a href="#">@RaymondWang</a>.</p>
+                    <p>Project for <a href="http://www.okta.com">Okta</a>, by <a href="mailto:rwang@okta.com">@RaymondWang</a> &amp;&amp; <a href="mailto:jackychen@okta.com">@JackieChan</a>.</p>
                 </div>
             </div>
 
@@ -39,15 +39,4 @@
 
     </div>
 </div>
-    <!--<div class="container">
-        <img class="logo" src="{{ url_for('static',filename='img/okta.png') }}">
-
-        <form class="form-signin" role="form" action="{{ url_for('login') }}" method="post">
-            <h2 class="form-signin-heading">Login</h2>
-            <input type="email" class="form-control" placeholder="Email address" required autofocus name="username">
-            <input type="password" class="form-control" placeholder="Password" required name="password">
-            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-        </form>
-
-    </div>-->
-    {% endblock %}
+{% endblock %}

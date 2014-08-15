@@ -11,9 +11,11 @@ app = Flask(__name__)
 #@app.route('/')
 #def hello():
 #    return 'Hello World!'
+
+@app.route('/home', methods=['GET'])
 @app.route('/', methods=['GET'])
-def redir_to_login():
-    return render_template('login.html')
+def home():
+    return render_template('home.html')
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -21,7 +23,7 @@ def login():
     if request.method == 'POST':
         if valid_login(request.form['username'],
             request.form['password']):
-            return render_template('home.html', error=error)#log_the_user_in(request.form['username'])
+            return render_template('cred.html', error=error)#log_the_user_in(request.form['username'])
     else:
         error = 'Invalid username/password'
     # the code below is executed if the request method

@@ -1,7 +1,36 @@
 {% extends "layout.html" %}
 {% block body %}
-{% if session.logged_in %}
-<div>logged in</div>
-{% endif %}
-<div>whatever</div>
+
+<div class="site-wrapper">
+    <div class="site-wrapper-inner">
+        <div class="cover-container">
+
+            <div class="masthead clearfix">
+                <div class="inner">
+                    <h3 class="masthead-brand">Clique</h3>
+                    <ul class="nav masthead-nav">
+                        <li class="active"><a href="/home">Home</a></li>
+                        <li><a href="/login">Login</a></li>
+                        <li><a href="#">Test Creds</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="inner cover">
+                <h1 class="cover-heading">Checkout Creds.</h1>
+                <p class="lead">Clique is a seamless way to check-out online credentials. Login, checkout credentials, and check them back in when done.</p>
+                <p class="lead">
+                    <a href="/login" class="btn btn-lg btn-default">Get started</a>
+                </p>
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Project for <a href="http://www.okta.com">Okta</a>, by <a href="mailto:rwang@okta.com">@RaymondWang</a> &amp;&amp; <a href="mailto:jackychen@okta.com">@JackieChan</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
