@@ -35,7 +35,7 @@ def join():
             error = 'Only Okta users can join the Clique :)'
     # the code below is executed if the request method
     # was GET or the credentials were invalid
-    return render_template('join.html', error = error, joined = joined)
+    return render_template('join.html', error=error, joined=joined)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -66,6 +66,11 @@ def cred():
     return render_template('cred.html', creds=creds)
 
 
+def add_credential(oam_app_name, comment, checkout, expire):
+    db_session.add(Creds(oam_app_name, comment, None, checkout, expire))
+    db_session.commit()
+
+
 #helpers
 def valid_login(username, password):
     user = User.query.filter(User.email == username, User.password == password).first()
@@ -75,6 +80,7 @@ def valid_login(username, password):
 def load_user(email):
     #print 'this is executed',userid
     return User(email)
+
 
 def load_dummy_data():
     u = User('admin@okta.com', 'everychanceiget')

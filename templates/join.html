@@ -11,19 +11,14 @@
                     <ul class="nav masthead-nav">
                         <li><a href="/home">Home</a></li>
                         <li class="active"><a href="/join">Join</a></li>
-                        {% if session['username'] %}
-                        <li><a href="/logout">Log out</a></li>
-                        {% else %}
                         <li><a href="/login">Login</a></li>
-                        {% endif %}
-                        {% if session['username'] %}<li><a href="/cred">Test Creds</a></li>{% endif %}
                     </ul>
                 </div>
             </div>
 
             <div class="inner cover">
                 <form class="form-signin" role="form" action="{{ url_for('join') }}" method="post">
-                    {% if joined %}<p><strong>You are in the Clique.</strong> {% endif %}
+                    {% if joined %}<div class="alert alert-success"><strong>You are in the Clique</strong></div> {% endif %}
                     {% if error %}<p class=error><strong>Error:</strong> {{ error }}{% endif %}
                     <input type="email" class="form-control" placeholder="Email address" required autofocus
                            name="username">

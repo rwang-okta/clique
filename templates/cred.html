@@ -9,6 +9,7 @@
                 <div class="inner">
                     <h3 class="masthead-brand">Clique</h3>
                     <ul class="nav masthead-nav">
+                        <li>{{session['username']}}</li>
                         <li><a href="/home">Home</a></li>
                         <li><a href="/logout">Log out</a></li>
                         <li class="active"><a href="/cred">Test Creds</a></li>
@@ -18,6 +19,9 @@
 
             <div class="inner cover">
 
+                <div class="btn-creds pull-right">
+                    <button type="button" class="btn btn-primary">Add Test Cred</button>
+                </div>
                 <div class="table-responsive table-header">
                     <table class="table table-striped table-hover table-condensed">
                         <thead>
@@ -30,8 +34,8 @@
                         </tr>
                         </thead>
                     </table>
-                    </div>
-                    <div class="bodycontainer table-scroll">
+                </div>
+                <div class="bodycontainer table-scroll">
                         <table class="table table-hover text-left">
                             <tbody>
                             {% for cred in creds %}

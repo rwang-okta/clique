@@ -9,10 +9,12 @@
                 <div class="inner">
                     <h3 class="masthead-brand">Clique</h3>
                     <ul class="nav masthead-nav">
-                        <li class="active"><a href="/home">Home</a></li>
                         {% if session['username'] %}
+                        <li>{{session['username']}}</li>
+                        <li class="active"><a href="/home">Home</a></li>
                         <li><a href="/logout">Log out</a></li>
                         {% else %}
+                        <li class="active"><a href="/home">Home</a></li>
                         <li><a href="/join">Join</a></li>
                         <li><a href="/login">Login</a></li>
                         {% endif %}
@@ -27,9 +29,11 @@
                 <p class="lead">Clique is a seamless way to check-out online credentials. Login, checkout credentials,
                     and check them back in when done.</p>
 
+                {% if not session['username'] %}
                 <p class="lead">
                     <a href="/login" class="btn btn-lg btn-default">Get started</a>
                 </p>
+                {% endif %}
             </div>
 
             <div class="mastfoot">
