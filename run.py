@@ -4,7 +4,7 @@ from flask_login import login_required, login_user, logout_user, current_user, L
 from database import db_session, init_db
 from models import User
 
-#from flask.ext.login import LoginManager
+# from flask.ext.login import LoginManager
 
 app = Flask(__name__)
 
@@ -12,27 +12,31 @@ app = Flask(__name__)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+
 @app.route('/home', methods=['GET'])
 @app.route('/', methods=['GET'])
 def home():
     return render_template('home.html')
 
-@app.route('/login', methods=['GET','POST'])
+
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
     if request.method == 'POST':
         if valid_login(request.form['username'],
-            request.form['password']):
-            return render_template('cred.html', error=error)#log_the_user_in(request.form['username'])
+                       request.form['password']):
+            return render_template('cred.html', error=error)  #log_the_user_in(request.form['username'])
         else:
             error = 'Invalid username/password'
     # the code below is executed if the request method
     # was GET or the credentials were invalid
     return render_template('login.html', error=error)
 
+
 @app.route('/cred', methods=['GET'])
 def cred():
     return render_template('cred.html')
+
 
 #helpers
 def valid_login(username, password):
@@ -55,9 +59,9 @@ if __name__ == '__main__':
     init_db()
 
     #default user (may change this to only add a user if none currently exists)
-    if not User.query.all():
-        u = User('admin@okta.com', 'everychanceiget')
-        db_session.add(u)
-        db_session.commit()
+    #if not User.query.all():
+    #    u = User('admin@okta.com', 'everychanceiget')
+    #    db_session.add(u)
+    #    db_session.commit()
 
-    app.run(debug = True)
+    app.run(debug=True)
