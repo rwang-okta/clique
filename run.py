@@ -44,7 +44,6 @@ def login():
         if user:
             login_user(user)
             session['username'] = request.form['username']
-            flash("logged in successfully.")
             return redirect('/cred')
         else:
             error = 'Invalid username/password'
