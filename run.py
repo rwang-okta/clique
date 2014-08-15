@@ -1,18 +1,16 @@
 import os
 from flask import Flask, request, render_template, url_for
-from flask_login import login_required, login_user, logout_user, current_user
+from flask_login import login_required, login_user, logout_user, current_user, LoginManager
+from database import db_session, init_db
+from models import User
 
 #from flask.ext.login import LoginManager
 
 app = Flask(__name__)
 
 #login init stuff.
-#login_manager = LoginManager()
-#login_manager.init_app(app)
-
-#@app.route('/')
-#def hello():
-#    return 'Hello World!'
+login_manager = LoginManager()
+login_manager.init_app(app)
 
 @app.route('/home', methods=['GET'])
 @app.route('/', methods=['GET'])
@@ -38,13 +36,28 @@ def cred():
 
 #helpers
 def valid_login(username, password):
-    #TODO: make this an actual login
-    if (username == "a@a.com" and password == "b"):
-        return True;
+    user = User.query.filter(User.email == username and User.password == password).first()
+    if user:
+        return True
     else:
-        return False;
+        return False
 
+#tears down session connections when apps die.
+#@app.teardown_appcontext
+#def shutdown_session():
+#    db_session.remove()
+
+#application
 if __name__ == '__main__':
-    app.secret_key = 'cliquef1293189tma8345halkfnsuyb78abnio2h3kla';
+    app.secret_key = 'cliquef1293189tma8345halkfnsuyb78abnio2h3kla'
     #we do this with gunicorn on prod servers, so only enable this locally for testing.
+
+    init_db()
+
+    #default user (may change this to only add a user if none currently exists)
+    if not User.query.all():
+        u = User('admin@okta.com', 'everychanceiget')
+        db_session.add(u)
+        db_session.commit()
+
     app.run(debug = True)
