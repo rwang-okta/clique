@@ -18,7 +18,6 @@ login_manager.init_app(app)
 def home():
     return render_template('home.html')
 
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     error = None
@@ -27,7 +26,6 @@ def login():
         if user:
             login_user(user)
             session['username'] = request.form['username']
-            flash("logged in successfully.")
             return redirect('/cred')
         else:
             error = 'Invalid username/password'
