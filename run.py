@@ -73,4 +73,4 @@ if __name__ == '__main__':
         db_session.add(u)
         db_session.commit()
 
-    #app.run(debug = True)
+    app.run(debug = True)
