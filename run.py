@@ -8,9 +8,12 @@ app = Flask(__name__)
 #login_manager = LoginManager()
 #login_manager.init_app(app)
 
-@app.route('/')
-def hello():
-    return 'Hello World!'
+#@app.route('/')
+#def hello():
+#    return 'Hello World!'
+@app.route('/', methods=['GET'])
+def redir_to_login():
+    return render_template('login.html')
 
 @app.route('/login', methods=['GET','POST'])
 def login():
@@ -28,11 +31,12 @@ def login():
 #helpers
 def valid_login(username, password):
     #TODO: make this an actual login
-    if (username == "a" and password == "b"):
+    if (username == "a@a.com" and password == "b"):
         return True;
     else:
         return False;
 
 #app.secret_key = 'cliquef1293189tma8345halkfnsuyb78abnio2h3kla';
 
-#app.run(debug = True)
+#we do this with gunicorn on prod servers, so only enable this locally for testing.
+app.run(debug = True)
