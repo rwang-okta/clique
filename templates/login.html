@@ -23,9 +23,6 @@
                            name="username">
                     <input type="password" class="form-control" placeholder="Password" required name="password">
                     <input type="submit" value="Sign in" class="btn btn-default form-control"/>
-                    {% for message in get_flashed_messages() %}
-                    <div class=flash>{{ message }}</div>
-                    {% endfor %}
                 </form>
             </div>
 

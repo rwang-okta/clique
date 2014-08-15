@@ -1,5 +1,5 @@
 import os
-from flask import Flask, request, render_template, url_for, flash, session
+from flask import Flask, request, render_template, url_for, flash, session, redirect
 from flask_login import login_required, login_user, logout_user, current_user, LoginManager
 from database import db_session, init_db
 from models import User
@@ -28,7 +28,7 @@ def login():
             login_user(user)
             session['username'] = request.form['username']
             flash("logged in successfully.")
-            return render_template('cred.html', error=error)
+            return redirect('/cred')
         else:
             error = 'Invalid username/password'
     # the code below is executed if the request method
@@ -40,7 +40,7 @@ def login():
 def logout():
     error = None
     session.pop('username', None)
-    return render_template('login.html', error=error)
+    return redirect('/login')
 
 @login_required
 @app.route('/cred', methods=['GET'])
