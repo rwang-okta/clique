@@ -216,3 +216,28 @@ body {
 .bodycontainer { max-height: 450px; width: 100%; margin: 0; overflow-y: auto; }
 
 .table-scrollable { margin: 0; padding: 0; }
+
+.hide-cred {
+    display: none;
+}
+
+/* flipping */
+
+#container{
+    position: relative;
+    -webkit-perspective: 500;
+}
+.block {
+
+    -webkit-transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 1.5s;
+}
+.rotated{
+    -webkit-transform: rotateY(180deg);
+}
+.side{
+    -webkit-backface-visibility: hidden;
+}
+.back{
+    -webkit-transform: rotateY(180deg);
+}
