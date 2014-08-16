@@ -2,7 +2,8 @@ import os, re
 from flask import Flask, request, render_template, url_for, flash, session, redirect
 from flask_login import login_required, login_user, logout_user, current_user, LoginManager
 from database import db_session, init_db
-from models import User, Creds
+from models import User, Creds, CredsSerializer
+from marshmallow import pprint
 
 # from flask.ext.login import LoginManager
 
@@ -65,6 +66,22 @@ def cred():
     creds = Creds.query.all()
     return render_template('cred.html', creds=creds)
 
+#not restful, should combine it with the previous function, but something we cna fix later.
+@login_required
+@app.route('/cred/<int:credId>', methods=['GET', 'POST'])
+def get_cred(credId):
+    if request.method == 'GET':
+        get_credentials = Creds.query.filter(Creds.id == int(credId)).first()
+
+        serialized = CredsSerializer(get_credentials)
+        return serialized.json
+    else:
+        get_credentials = Creds.query.filter(Creds.id == int(credId)).first()
+        get_credentials.user = session['username']
+        db_session.commit()
+        creds = Creds.query.all()
+        return render_template('cred.html', creds=creds)
+        #return redirect('/cred')
 
 def add_credential(oam_app_name, comment, checkout, expire):
     db_session.add(Creds(oam_app_name, comment, None, checkout, expire))

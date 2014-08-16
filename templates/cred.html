@@ -45,7 +45,7 @@
                                     <td width="35%">{{cred.comment}}</td>
                                     <td width="20%">
                                         {% if cred.user == None %}
-                                        <button type="button" class="btn btn-success" onclick="changeClass(false, {{cred.id}})">Check-out</button>
+                                        <button type="button" class="btn btn-success" onclick="changeClass(false, {{cred.id}})" id={{cred.id}}>Check-out</button>
                                         {% elif cred.user == 'Disabled' %}
                                         <button type="button" class="btn btn-danger">Disabled</button>
                                         {% else %}
@@ -63,10 +63,11 @@
                     </div>
                 </div>
                 <div class="back side Absolute-Center">
-                    <div>Login Url:<span id="login_url"></span></div>
-                    <div>Username:<span id="username"></span></div>
-                    <div>Password:<span id="password"></span></div>
-                    <button type="button" class="btn btn-success" onclick="checkout()">Confirm checkout</button>
+                    <div>Login Url: <span id="login_url"></span></div>
+                    <div>Username: <span id="username"></span></div>
+                    <div>Password: <span id="password"></span></div>
+                    <br>
+                    <button type="button" class="btn btn-success confirm-checkout">Confirm checkout</button>
                     <button type="button" class="btn btn-danger" onclick="changeClass(false, false)">Cancel</button>
                 </div>
             </div>

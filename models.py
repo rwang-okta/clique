@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, Integer, Boolean, ForeignKey, Date
 from database import Base
-
+from marshmallow import Serializer, fields, pprint
 
 class User(Base):
     __tablename__ = 'users'
@@ -51,3 +51,9 @@ class Creds(Base):
 
     def __repr__(self):
         return '<Creds %r>' % (self.username)
+
+class CredsSerializer(Serializer):
+    id = fields.Integer()
+    login_url = fields.String()
+    username = fields.String()
+    password = fields.String()
