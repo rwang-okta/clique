@@ -39,10 +39,13 @@ class Creds(Base):
     checkout = Column(Date)
     expire = Column(Date)
 
-    def __init__(self, oan_app_name=None, comment=None, user=None, checkout=None, expire=None):
+    def __init__(self, oan_app_name=None, comment=None, user=None,  login_url=None, username=None, password=None, checkout=None, expire=None):
         self.oan_app_name = oan_app_name
         self.comment = comment
         self.user = user
+        self.login_url = login_url;
+        self.username = username;
+        self.password = password;
         self.checkout = checkout
         self.expire = expire
 

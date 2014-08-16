@@ -20,8 +20,6 @@
             <div id="block" class="block">
                 <div class="front side">
                     <div class="inner cover">
-
-
                         <div class="table-responsive table-header">
                             <div class="btn-creds pull-right">
                             <button type="button" class="btn btn-primary" onclick="changeClass(true, false)">Add Test Cred</button>
@@ -64,8 +62,12 @@
 
                     </div>
                 </div>
-                <div class="back side">
-                    <button type="button" class="btn btn-danger">Disabled</button>
+                <div class="back side Absolute-Center">
+                    <div>Login Url:<span id="login_url"></span></div>
+                    <div>Username:<span id="username"></span></div>
+                    <div>Password:<span id="password"></span></div>
+                    <button type="button" class="btn btn-success" onclick="checkout()">Confirm checkout</button>
+                    <button type="button" class="btn btn-danger" onclick="changeClass(false, false)">Cancel</button>
                 </div>
             </div>
             <div class="mastfoot">

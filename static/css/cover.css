@@ -227,8 +227,8 @@ body {
     position: relative;
     -webkit-perspective: 500;
 }
-.block {
 
+.block {
     -webkit-transform-style: preserve-3d;
     -webkit-transition: -webkit-transform 1.5s;
 }
@@ -240,8 +240,22 @@ body {
 }
 .back{
     -webkit-transform: rotateY(180deg);
+    bottom: 100px;
 }
 
 .btn-creds{
     margin-top: 40px;
+}
+
+/*.front, .back {
+	backface-visibility: hidden;
+	position: absolute;
+	top: -150px;
+	left: -100px;
+}*/
+
+.Absolute-Center {
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }

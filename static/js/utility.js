@@ -1,8 +1,6 @@
 function changeClass(isAddCreds, isCheckOutCreds){
     if (isAddCreds == true) {
-        $(".back").html("
-        
-        ")
+        $(".back").html("");
     }
 
     if(document.getElementById("block").className == "block"){
@@ -11,4 +9,11 @@ function changeClass(isAddCreds, isCheckOutCreds){
     else{
         document.getElementById("block").className = "block";
     }
+}
+
+function populateValues(credId) {
+    //post to server, get back values, replace
+}
+
+function checkout() {
 }
