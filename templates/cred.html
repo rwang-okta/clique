@@ -21,10 +21,11 @@
                 <div class="front side">
                     <div class="inner cover">
 
-                        <div class="btn-creds pull-right">
-                            <button type="button" class="btn btn-primary">Add Test Cred</button>
-                        </div>
+
                         <div class="table-responsive table-header">
+                            <div class="btn-creds pull-right">
+                            <button type="button" class="btn btn-primary" onclick="changeClass(true, false)">Add Test Cred</button>
+                        </div>
                             <table class="table table-striped table-hover table-condensed">
                                 <thead>
                                 <tr>
@@ -46,7 +47,7 @@
                                     <td width="35%">{{cred.comment}}</td>
                                     <td width="20%">
                                         {% if cred.user == None %}
-                                        <button type="button" class="btn btn-success" onclick="changeClass()">Check-out</button>
+                                        <button type="button" class="btn btn-success" onclick="changeClass(false, {{cred.id}})">Check-out</button>
                                         {% elif cred.user == 'Disabled' %}
                                         <button type="button" class="btn btn-danger">Disabled</button>
                                         {% else %}

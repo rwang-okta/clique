@@ -1,8 +1,10 @@
-function slideDownAndCheckout(credId) {
-    $("#" + credId).slideToggle("slow");
-}
+function changeClass(isAddCreds, isCheckOutCreds){
+    if (isAddCreds == true) {
+        $(".back").html("
+        
+        ")
+    }
 
-function changeClass(){
     if(document.getElementById("block").className == "block"){
         document.getElementById("block").className += " rotated";
     }
