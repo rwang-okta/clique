@@ -1,6 +1,6 @@
 function changeClass(isAddCreds, isCheckOutCreds){
     if (isAddCreds == true) {
-        $(".back").html("");
+        $(".back").html("<form class='form-inline'><input type='text' class='input-small' placeholder='Name'><input type='text' class='input-small' placeholder='Notes'><input type='text' class='input-small' placeholder='Last checkout'><input type='text' class='input-small' placeholder='Expires on'><button type='submit' class='btn'>Add</button></form>");
     }
 
     if (isCheckOutCreds != false) {
