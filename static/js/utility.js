@@ -1,6 +1,7 @@
 function changeClass(isAddCreds, isCheckOutCreds){
     if (isAddCreds == true) {
-        $(".back").html("<form class='form-inline'><input type='text' class='input-small' placeholder='Name'><input type='text' class='input-small' placeholder='Notes'><input type='text' class='input-small' placeholder='Last checkout'><input type='text' class='input-small' placeholder='Expires on'><button type='submit' class='btn'>Add</button></form>");
+        $(".back").html("<form class='form-horizontal'><div class='control-group'><div class='controls'><input type='text' id='name' placeholder='Name'></div></div><div class='control-group'><div class='controls'><input type='text' id='notes' placeholder='Notes'></div></div><div class='control-group'><div class='controls'><input type='text' id='checkout' placeholder='Last checkout'></div></div><div class='control-group'><div class='controls'><input type='text' id='expireon' placeholder='Expires on'></div></div><div class='control-group'><div class='controls'><button type='button' class='btn btn-primary add-cred'>Add Test Cred</button></div></div></form>");
+        $(".add-cred").attr("onclick", "addcred")
     }
 
     if (isCheckOutCreds != false) {
@@ -25,5 +26,9 @@ function checkout(credId) {
     $.post( "/cred/" + credId, function( data ) {
 
         });
-location.reload();
+    location.reload();
+}
+
+function addcred(name, notes, lastcheckout, expireon) {
+    
 }
