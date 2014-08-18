@@ -129,24 +129,42 @@ def load_dummy_data():
     db_session.add(u)
     u = User('rwang@okta.com', 'rayisawesome')
     db_session.add(u)
-    db_session.add(Creds('Concur', 'For Sales use only.', 'sshen@okta.com'))
-    db_session.add(Creds('Concur', '', 'bng@okta.com'))
-    db_session.add(Creds('Concur', '', None, 'http://www.concur.com/login', 'abc@concur.com', 'OktaOktaOkta12345'))
-    db_session.add(Creds('O365', '', None, 'http://www.office.com/login', 'abc@office.com', 'password12'))
-    db_session.add(Creds('O365', 'Compromised!', 'Disabled'))
-    db_session.add(Creds('O365', '', None, 'http://www.oficce.com/login', 'abc@office.com', 'nopasswordhere.'))
-    db_session.add(Creds('Coupa', '', None))
-    db_session.add(Creds('Coupa', '', None))
-    db_session.add(Creds('ServiceNow', '', 'Disabled'))
-    db_session.add(Creds('ServiceNow', '', None))
-    db_session.add(Creds('Jobvite', '', None))
-    db_session.add(Creds('Salesforce', '', None))
-    db_session.add(Creds('Salesforce', '', 'Disabled'))
-    db_session.add(Creds('Salesforce', '', None))
-    db_session.add(Creds('Salesforce', '', 'jackychen@okta.com'))
-    db_session.add(Creds('WebEx', '', None))
-    db_session.add(Creds('Workday', 'For Eng use only.', 'cwu@okta.com'))
-    db_session.add(Creds('Workday', 'For Sales use only.', 'rwang@okta.com'))
+    db_session.add(Creds('Concur', 'For Sales use only.', 'sshen@okta.com', None, None, None,
+                         datetime.datetime.strptime("07-18-14", "%m-%d-%y"), datetime.datetime.strptime("08-21-14", "%m-%d-%y")))
+    db_session.add(Creds('Concur', '', 'bng@okta.com', None, None, None,
+                         datetime.datetime.strptime("08-18-14", "%m-%d-%y"), datetime.datetime.strptime("08-21-14", "%m-%d-%y")))
+    db_session.add(Creds('Concur', '', None, 'http://www.concur.com/login', 'abc@concur.com', 'OktaOktaOkta12345',
+                         datetime.datetime.strptime("08-13-14", "%m-%d-%y"), datetime.datetime.strptime("09-21-14", "%m-%d-%y")))
+    db_session.add(Creds('O365', '', None, 'http://www.office.com/login', 'abc@office.com', 'password12',
+                         datetime.datetime.strptime("08-15-14", "%m-%d-%y"), datetime.datetime.strptime("08-21-14", "%m-%d-%y")))
+    db_session.add(Creds('O365', 'Compromised!', 'Disabled', None, None, None,
+                         datetime.datetime.strptime("08-18-14", "%m-%d-%y"), datetime.datetime.strptime("08-21-14", "%m-%d-%y")))
+    db_session.add(Creds('O365', '', None, 'http://www.oficce.com/login', 'abc@office.com', 'nopasswordhere.',
+                         datetime.datetime.strptime("08-10-14", "%m-%d-%y"), datetime.datetime.strptime("08-19-14", "%m-%d-%y")))
+    db_session.add(Creds('Coupa', '', None, None, None, None,
+                         datetime.datetime.strptime("08-18-14", "%m-%d-%y"), datetime.datetime.strptime("08-23-14", "%m-%d-%y")))
+    db_session.add(Creds('Coupa', '', None, None, None, None,
+                         datetime.datetime.strptime("08-18-14", "%m-%d-%y"), datetime.datetime.strptime("08-31-14", "%m-%d-%y")))
+    db_session.add(Creds('ServiceNow', '', 'Disabled', None, None, None,
+                         datetime.datetime.strptime("08-13-14", "%m-%d-%y"), datetime.datetime.strptime("08-17-14", "%m-%d-%y")))
+    db_session.add(Creds('ServiceNow', '', None, None, None, None,
+                         datetime.datetime.strptime("07-18-14", "%m-%d-%y"), datetime.datetime.strptime("08-21-14", "%m-%d-%y")))
+    db_session.add(Creds('Jobvite', '', None, None, None, None,
+                         datetime.datetime.strptime("08-18-14", "%m-%d-%y"), datetime.datetime.strptime("08-25-14", "%m-%d-%y")))
+    db_session.add(Creds('Salesforce', '', None, None, None, None,
+                         datetime.datetime.strptime("07-29-14", "%m-%d-%y"), datetime.datetime.strptime("08-27-14", "%m-%d-%y")))
+    db_session.add(Creds('Salesforce', '', 'Disabled', None, None, None,
+                         datetime.datetime.strptime("07-18-14", "%m-%d-%y"), datetime.datetime.strptime("08-20-14", "%m-%d-%y")))
+    db_session.add(Creds('Salesforce', '', None, None, None, None,
+                         datetime.datetime.strptime("07-21-14", "%m-%d-%y"), datetime.datetime.strptime("09-10-14", "%m-%d-%y")))
+    db_session.add(Creds('Salesforce', '', 'jackychen@okta.com', None, None, None,
+                         datetime.datetime.strptime("08-10-14", "%m-%d-%y"), datetime.datetime.strptime("09-03-14", "%m-%d-%y")))
+    db_session.add(Creds('WebEx', '', None, None, None, None,
+                         datetime.datetime.strptime("08-03-14", "%m-%d-%y"), datetime.datetime.strptime("08-23-14", "%m-%d-%y")))
+    db_session.add(Creds('Workday', 'For Eng use only.', 'cwu@okta.com', None, None, None,
+                         datetime.datetime.strptime("08-10-14", "%m-%d-%y"), datetime.datetime.strptime("08-21-14", "%m-%d-%y")))
+    db_session.add(Creds('Workday', 'For Sales use only.', 'rwang@okta.com', None, None, None,
+                         datetime.datetime.strptime("08-05-14", "%m-%d-%y"), datetime.datetime.strptime("08-25-14", "%m-%d-%y")))
 
     db_session.commit()
 
