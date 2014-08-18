@@ -131,9 +131,9 @@ def load_dummy_data():
     db_session.add(Creds('Concur', 'For Sales use only.', 'sshen@okta.com'))
     db_session.add(Creds('Concur', '', 'bng@okta.com'))
     db_session.add(Creds('Concur', '', None, 'http://www.concur.com/login', 'abc@concur.com', 'OktaOktaOkta12345'))
-    db_session.add(Creds('O365', '', None))
+    db_session.add(Creds('O365', '', None, 'http://www.office.com/login', 'abc@office.com', 'password12'))
     db_session.add(Creds('O365', 'Compromised!', 'Disabled'))
-    db_session.add(Creds('O365', '', None))
+    db_session.add(Creds('O365', '', None, 'http://www.oficce.com/login', 'abc@office.com', 'nopasswordhere.'))
     db_session.add(Creds('Coupa', '', None))
     db_session.add(Creds('Coupa', '', None))
     db_session.add(Creds('ServiceNow', '', 'Disabled'))
@@ -166,4 +166,4 @@ if __name__ == '__main__':
     if not User.query.all():
          load_dummy_data()
 
-    #app.run(debug=True)
+    app.run(debug=True)
