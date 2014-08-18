@@ -27,3 +27,17 @@ function checkout(credId) {
         });
     location.reload();
 }
+
+function redirectRemove() {
+    location.pathname="/cred-remove";
+}
+
+function redirectCreds() {
+    location.pathname="/cred";
+}
+
+function removeCred(credId) {
+    $.post( "/cred-remove/" + credId, function( data ) {
+
+    });
+}

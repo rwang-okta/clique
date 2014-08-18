@@ -70,6 +70,23 @@ def cred():
     return render_template('cred.html', creds=creds)
 
 
+@login_required
+@app.route('/cred-remove', methods=['GET'])
+def cred_remove():
+    creds = Creds.query.all()
+    return render_template('cred-remove.html', creds=creds)
+
+
+@login_required
+@app.route('/cred-remove/<int:credId>', methods=['POST'])
+def remove_cred(credId):
+    get_credentials = Creds.query.filter(Creds.id == int(credId)).first()
+    db_session.delete(get_credentials)
+    db_session.commit()
+    creds = Creds.query.all()
+    return render_template('cred.html', creds=creds)
+
+
 #not restful, should combine it with the previous function, but something we cna fix later.
 @login_required
 @app.route('/cred/<int:credId>', methods=['GET', 'POST'])
