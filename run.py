@@ -166,4 +166,4 @@ if __name__ == '__main__':
     if not User.query.all():
          load_dummy_data()
 
-    app.run(debug=True)
+    #app.run(debug=True)
