@@ -64,7 +64,8 @@ def logout():
 @app.route('/cred', methods=['GET', 'POST'])
 def cred():
     if request.method == 'POST':
-        add_credential(request.form['name'], request.form['notes'], request.form['checkout'],
+        add_credential(request.form['name'], request.form['loginurl'], request.form['username'],
+                       request.form['password'], request.form['notes'], request.form['checkout'],
                        request.form['expireon'])
     creds = Creds.query.all()
     return render_template('cred.html', creds=creds)
@@ -105,8 +106,8 @@ def get_cred(credId):
         #return redirect('/cred')
 
 
-def add_credential(oam_app_name, comment, checkout, expire):
-    db_session.add(Creds(oam_app_name, comment, None, None, None, None,
+def add_credential(oam_app_name, loginurl, username, password, comment, checkout, expire):
+    db_session.add(Creds(oam_app_name, comment, None, loginurl, username, password,
                          datetime.datetime.strptime(checkout, "%m-%d-%y"),
                          datetime.datetime.strptime(expire, "%m-%d-%y")))
     db_session.commit()
