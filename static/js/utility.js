@@ -1,7 +1,6 @@
 function changeClass(isAddCreds, isCheckOutCreds){
     if (isAddCreds == true) {
-        $(".back").html("<form class='form-horizontal'><div class='control-group'><div class='controls'><input type='text' id='name' placeholder='Name'></div></div><div class='control-group'><div class='controls'><input type='text' id='notes' placeholder='Notes'></div></div><div class='control-group'><div class='controls'><input type='text' id='checkout' placeholder='Last checkout'></div></div><div class='control-group'><div class='controls'><input type='text' id='expireon' placeholder='Expires on'></div></div><div class='control-group'><div class='controls'><button type='button' class='btn btn-primary add-cred'>Add Test Cred</button></div></div></form>");
-        $(".add-cred").attr("onclick", "addcred")
+        $(".back").html("<form class='form-horizontal add-cred-form' role='form' action='/cred' method='post'><div class='control-group'><div class='controls'><input type='text' placeholder='Name' required autofocus name='name'></div></div><div class='control-group'><div class='controls'><input type='text' placeholder='Notes' name='notes'></div></div><div class='control-group'><div class='controls'><input type='text' placeholder='Last checkout' name='checkout'></div></div><div class='control-group'><div class='controls'><input type='text' placeholder='Expires on' name='expireon'></div></div><div class='control-group'><div class='controls'><input type='submit' value='Add Test Cred' class='btn btn-primary'/></div></div></form>");
     }
 
     if (isCheckOutCreds != false) {
@@ -27,8 +26,4 @@ function checkout(credId) {
 
         });
     location.reload();
-}
-
-function addcred(name, notes, lastcheckout, expireon) {
-    
 }

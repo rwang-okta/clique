@@ -61,10 +61,14 @@ def logout():
     return redirect('/login')
 
 @login_required
-@app.route('/cred', methods=['GET'])
+@app.route('/cred', methods=['GET', 'POST'])
 def cred():
+    if request.method == 'POST':
+        add_credential(request.form['name'], request.form['notes'], request.form['checkout'],
+                       request.form['expireon'])
     creds = Creds.query.all()
     return render_template('cred.html', creds=creds)
+
 
 #not restful, should combine it with the previous function, but something we cna fix later.
 @login_required
@@ -82,6 +86,7 @@ def get_cred(credId):
         creds = Creds.query.all()
         return render_template('cred.html', creds=creds)
         #return redirect('/cred')
+
 
 def add_credential(oam_app_name, comment, checkout, expire):
     db_session.add(Creds(oam_app_name, comment, None, checkout, expire))
