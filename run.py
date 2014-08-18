@@ -1,4 +1,4 @@
-import os, re
+import os, re, datetime
 from flask import Flask, request, render_template, url_for, flash, session, redirect
 from flask_login import login_required, login_user, logout_user, current_user, LoginManager
 from database import db_session, init_db
@@ -89,7 +89,9 @@ def get_cred(credId):
 
 
 def add_credential(oam_app_name, comment, checkout, expire):
-    db_session.add(Creds(oam_app_name, comment, None, checkout, expire))
+    db_session.add(Creds(oam_app_name, comment, None, None, None, None,
+                         datetime.datetime.strptime(checkout, "%m-%d-%y"),
+                         datetime.datetime.strptime(expire, "%m-%d-%y")))
     db_session.commit()
 
 
