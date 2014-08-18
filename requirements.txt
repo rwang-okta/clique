@@ -8,3 +8,4 @@ gunicorn==19.1.0
 itsdangerous==0.24
 marshmallow==0.7.0
 wsgiref==0.1.2
+psycopg2==2.5

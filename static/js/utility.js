@@ -40,4 +40,5 @@ function removeCred(credId) {
     $.post( "/cred-remove/" + credId, function( data ) {
 
     });
+    redirectRemove();
 }
